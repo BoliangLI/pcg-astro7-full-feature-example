@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/astro-logo.svg';
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+---
+
+<Layout title="Astro 7 Image">
+  <h1>Runtime Image</h1>
+  <section class="card">
+    <Image
+      id="runtime-image"
+      src={logo}
+      width={160}
+      height={160}
+      format="svg"
+      alt="Astro logo optimized by the runtime image endpoint"
+    />
+    <p>请求由官方 Node Adapter 的 <code>/_image</code> Endpoint 处理。</p>
+  </section>
+</Layout>

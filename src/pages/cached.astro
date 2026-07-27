@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+Astro.cache.set({ maxAge: 5, swr: 30, tags: ['demo-clock'] });
+const renderedAt = new Date().toISOString();
+---
+
+<Layout title="Astro 7 Route Cache">
+  <h1>Stable Route Cache</h1>
+  <section class="card">
+    <p id="cache-rendered-at">cached-rendered-at: {renderedAt}</p>
+    <p>刷新后在 TTL 内时间保持不变，并返回 <code>X-Astro-Cache</code>。</p>
+    <button id="invalidate-route-cache" type="button">Invalidate Route Cache</button>
+    <p id="invalidate-status" class="meta" role="status" aria-live="polite"></p>
+  </section>
+</Layout>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>(
+    '#invalidate-route-cache'
+  );
+  const status = document.querySelector<HTMLElement>('#invalidate-status');
+
+  button?.addEventListener('click', async () => {
+    button.disabled = true;
+    if (status) status.textContent = 'Invalidating…';
+    try {
+      const response = await fetch('/api/invalidate', { method: 'POST' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (status) status.textContent = 'Invalidated. Reloading…';
+      window.location.reload();
+    } catch (error) {
+      if (status) {
+        status.textContent = `Invalidate failed: ${String(error)}`;
+      }
+      button.disabled = false;
+    }
+  });
+</script>

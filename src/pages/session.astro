@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+const visits = Number((await Astro.session.get('visits')) || 0) + 1;
+Astro.session.set('visits', visits, { ttl: 3600 });
+---
+
+<Layout title="Astro 7 Session">
+  <h1>Distributed Session</h1>
+  <section class="card">
+    <p id="session-visits">visits: {visits}</p>
+    <p>PCG 构建会把默认文件驱动替换为 Gateway Session Driver；本地 serve 使用隔离的内存驱动。</p>
+  </section>
+</Layout>

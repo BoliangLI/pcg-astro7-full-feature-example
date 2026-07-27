@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Counter from '../components/Counter';
+
+export const prerender = true;
+const ssgGeneratedAt = new Date().toISOString();
+---
+
+<Layout title="PCG Astro 7 example">
+  <h1>PCG × Astro 7</h1>
+  <p class="meta" id="astro-version">官方脚手架，Astro 7.1.3 / @astrojs/node 11.0.2</p>
+  <section class="card">
+    <h2>SSG + React Client Island</h2>
+    <p>本页在构建期生成，按钮由 React 在浏览器中 hydration。</p>
+    <p id="ssg-rendered-at">ssg-rendered-at: {ssgGeneratedAt}</p>
+    <Counter client:load />
+  </section>
+  <section class="card">
+    <h2>适配能力</h2>
+    <p>SSR、Endpoint、Middleware、Action、Session、Image、Server Island，以及 Astro 7 稳定 Route Cache。</p>
+  </section>
+</Layout>
