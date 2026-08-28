@@ -4,6 +4,8 @@ import logo from '../assets/astro-logo.svg';
 import Layout from '../layouts/Layout.astro';
 
 export const prerender = false;
+const externalImageUrl =
+  'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
 ---
 
 <Layout title="Astro 7 Image">
@@ -19,4 +21,31 @@ export const prerender = false;
     />
     <p>请求由官方 Node Adapter 的 <code>/_image</code> Endpoint 处理。</p>
   </section>
+
+  <section class="card" id="external-image-optimization">
+    <h2>外部图片优化</h2>
+    <Image
+      id="external-optimized-image"
+      src={externalImageUrl}
+      width={502}
+      height={493}
+      format="webp"
+      quality={75}
+      loading="eager"
+      alt="An external PNG optimized to WebP by Astro"
+    />
+    <p>
+      从远程 PNG 原图 <code>1004 × 986</code> 缩放到 <code>502 × 493</code>，并以质量
+      <code>75</code> 转换为 WebP。
+    </p>
+  </section>
 </Layout>
+
+<style>
+  #external-optimized-image {
+    display: block;
+    width: min(100%, 502px);
+    height: auto;
+    border-radius: 12px;
+  }
+</style>

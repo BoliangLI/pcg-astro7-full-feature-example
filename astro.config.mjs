@@ -10,6 +10,15 @@ export default defineConfig({
     mode: 'standalone',
   }),
   integrations: [react()],
+  image: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'zos.alipayobjects.com',
+        pathname: '/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      },
+    ],
+  },
   cache: {},
   routeRules: {
     '/cached': { maxAge: 5, swr: 30, tags: ['demo-clock'] },
