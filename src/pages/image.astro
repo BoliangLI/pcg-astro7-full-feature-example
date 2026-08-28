@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/astro-logo.svg';
+import localLandscape from '../assets/local-landscape.png';
 import Layout from '../layouts/Layout.astro';
 
 export const prerender = false;
@@ -8,9 +9,10 @@ const externalImageUrl =
   'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
 ---
 
-<Layout title="Astro 7 Image">
-  <h1>Runtime Image</h1>
+<Layout title="Astro 7 Image Optimization">
+  <h1>Image Optimization</h1>
   <section class="card">
+    <h2>Runtime Image Endpoint</h2>
     <Image
       id="runtime-image"
       src={logo}
@@ -20,6 +22,23 @@ const externalImageUrl =
       alt="Astro logo optimized by the runtime image endpoint"
     />
     <p>请求由官方 Node Adapter 的 <code>/_image</code> Endpoint 处理。</p>
+  </section>
+
+  <section class="card" id="local-image-optimization">
+    <h2>本地图片优化</h2>
+    <Image
+      id="local-optimized-image"
+      src={localLandscape}
+      width={720}
+      height={450}
+      format="webp"
+      quality={75}
+      alt="A locally imported landscape optimized to WebP by Astro"
+    />
+    <p>
+      从 <code>src/assets/local-landscape.png</code> 静态导入，在请求时缩放到
+      <code>720 × 450</code>，并以质量 <code>75</code> 转换为 WebP。
+    </p>
   </section>
 
   <section class="card" id="external-image-optimization">
@@ -42,10 +61,18 @@ const externalImageUrl =
 </Layout>
 
 <style>
+  #local-optimized-image,
   #external-optimized-image {
     display: block;
-    width: min(100%, 502px);
     height: auto;
     border-radius: 12px;
+  }
+
+  #local-optimized-image {
+    width: min(100%, 720px);
+  }
+
+  #external-optimized-image {
+    width: min(100%, 502px);
   }
 </style>

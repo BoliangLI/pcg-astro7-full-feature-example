@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:pcg": "node ../../packages/cli/dist/bin/cli.js build --dir .",
+    "build:pcg": "node ../../packages/cli/dist/bin/cli.js build --framework astro --dir .",
     "start:pcg": "npm run build:pcg && node ../../packages/cli/dist/bin/cli.js serve --dir . --port 6177 --gateway http://127.0.0.1:7001 --app-id local_user/local_app --secret local-dev-secret",
     "preview": "astro preview",
     "astro": "astro"
