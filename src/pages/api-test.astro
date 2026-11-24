@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Astro 7 API 测试">
+  <h1>Astro API 测试</h1>
+  <section class="card">
+    <p>点击按钮会请求 <code>GET /api/console-log</code>，接口在服务端打印日志，此处显示响应。</p>
+    <button id="call-log-api" type="button">调用 API</button>
+    <pre id="log-api-result" role="status"></pre>
+  </section>
+</Layout>
+
+<script>
+  const result = document.getElementById('log-api-result')!;
+  document.getElementById('call-log-api')?.addEventListener('click', async () => {
+    result.textContent = '正在调用 API…';
+    try {
+      const response = await fetch('/api/console-log');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      result.textContent = JSON.stringify(await response.json(), null, 2);
+    } catch (error) {
+      result.textContent = `API 调用失败：${String(error)}`;
+    }
+  });
+</script>

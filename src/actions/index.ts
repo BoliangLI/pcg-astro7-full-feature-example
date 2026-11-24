@@ -5,8 +5,9 @@ export const server = {
   greet: defineAction({
     accept: 'form',
     input: z.object({ name: z.string().min(1).max(40) }),
-    handler: async ({ name }) => ({
-      message: `Hello ${name} from Astro 7 Action`,
-    }),
+    handler: async ({ name }) => {
+      console.log('[action:greet] handler executed');
+      return { message: `Hello ${name} from Astro 7 Action` };
+    },
   }),
 };
