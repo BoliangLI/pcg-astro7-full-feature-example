@@ -41,6 +41,18 @@ const externalImageUrl =
     </p>
   </section>
 
+  <section class="card" id="public-image-path">
+    <h2>本地路径图片</h2>
+    <Image
+      id="public-path-image"
+      src="/images/local-landscape.png"
+      width={1440}
+      height={900}
+      alt="A landscape served from the public directory"
+    />
+    <p>通过 <code>/images/local-landscape.png</code> 直接加载 PNG 原图。</p>
+  </section>
+
   <section class="card" id="external-image-optimization">
     <h2>外部图片优化</h2>
     <Image
@@ -62,13 +74,15 @@ const externalImageUrl =
 
 <style>
   #local-optimized-image,
+  #public-path-image,
   #external-optimized-image {
     display: block;
     height: auto;
     border-radius: 12px;
   }
 
-  #local-optimized-image {
+  #local-optimized-image,
+  #public-path-image {
     width: min(100%, 720px);
   }
 
