@@ -1,6 +1,6 @@
 {
   "name": "pcg-astro7-full-feature-example-yarn",
-  "type": "module",
+  "type": "esm",
   "version": "0.0.1",
   "engines": {
     "node": ">=22.22.0"
