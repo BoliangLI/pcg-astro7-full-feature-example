@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DeferredGreeting from '../components/DeferredGreeting.astro';
+
+export const prerender = false;
+---
+
+<Layout title="Astro 7 Server Island">
+  <h1>Server Island</h1>
+  <section class="card" id="server-island-shell">
+    <DeferredGreeting server:defer name="PCG Astro 7">
+      <p id="server-island-fallback" slot="fallback">Server Island loading…</p>
+    </DeferredGreeting>
+  </section>
+</Layout>

@@ -1,0 +1,4 @@
+{
+  "name": "astro7-full-feature-pnpm",
+  "installCommand": "pnpm install --frozen-lockfile"
+}

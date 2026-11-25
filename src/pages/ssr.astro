@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = false;
+const renderedAt = new Date().toISOString();
+---
+
+<Layout title="Astro 7 SSR">
+  <h1>SSR</h1>
+  <section class="card">
+    <p id="ssr-rendered-at">rendered-at: {renderedAt}</p>
+    <p id="middleware-local">middleware-started-at: {Astro.locals.requestStartedAt}</p>
+    <p>runtime-env: <code>{process.env.PCG_EXAMPLE_RUNTIME || 'not-set'}</code></p>
+  </section>
+</Layout>
