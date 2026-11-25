@@ -1,4 +1,4 @@
 {
-  "name": "astro7-full-feature-yarn",
+  "name": "pcg-astro7-yarn-module",
   "installCommand": "yarn install --frozen-lockfile"
 }
