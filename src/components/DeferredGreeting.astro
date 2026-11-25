@@ -1,0 +1,9 @@
+---
+const { name = 'Astro' } = Astro.props;
+await new Promise(resolve => setTimeout(resolve, 40));
+const renderedAt = new Date().toISOString();
+---
+
+<div id="server-island-result">
+  Server Island says hello to <strong>{name}</strong> at {renderedAt}
+</div>

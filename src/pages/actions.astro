@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { actions } from 'astro:actions';
+
+export const prerender = false;
+const result = Astro.getActionResult(actions.greet);
+---
+
+<Layout title="Astro 7 Action">
+  <h1>Astro Action</h1>
+  <section class="card">
+    <form method="POST" action={actions.greet}>
+      <label>名字 <input name="name" value="PCG" /></label>
+      <button type="submit">调用 Action</button>
+    </form>
+    {result?.data && <p id="action-result">{result.data.message}</p>}
+    {result?.error && <p id="action-error">Action validation failed</p>}
+  </section>
+</Layout>

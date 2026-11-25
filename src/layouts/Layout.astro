@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <style is:global>
+      :root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #18212f; background: #f4f7fb; }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      main { width: min(960px, calc(100% - 32px)); margin: 40px auto; }
+      nav { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+      nav a { color: #075985; background: #e0f2fe; border-radius: 999px; padding: 7px 12px; text-decoration: none; }
+      .card { background: white; border: 1px solid #dbe4ef; border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px #16324f0d; margin: 16px 0; }
+      code { background: #e8eef6; padding: 2px 6px; border-radius: 5px; }
+      button { border: 0; border-radius: 9px; padding: 9px 14px; background: #0369a1; color: white; cursor: pointer; }
+      input { padding: 9px; border: 1px solid #a8b8ca; border-radius: 8px; }
+      .meta { color: #53657a; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="示例导航">
+        <a href="/">SSG + Client Island</a>
+        <a href="/ssr">SSR</a>
+        <a href="/session">Session</a>
+        <a href="/actions">Action</a>
+        <a href="/islands">Server Island</a>
+        <a href="/image">Image</a>
+        <a href="/cached">Route Cache</a>
+      </nav>
+      <slot />
+    </main>
+  </body>
+</html>

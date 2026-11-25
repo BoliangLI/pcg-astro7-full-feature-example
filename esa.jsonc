@@ -1,0 +1,4 @@
+{
+  "name": "astro7-full-feature-yarn",
+  "installCommand": "yarn install --frozen-lockfile"
+}
