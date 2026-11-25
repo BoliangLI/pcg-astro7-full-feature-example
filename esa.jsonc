@@ -1,4 +1,4 @@
 {
-  "name": "astro7-full-feature-pnpm",
+  "name": "pcg-astro7-pnpm-commonjs",
   "installCommand": "pnpm install --frozen-lockfile"
 }
